@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Elite Drive</title>
+  <link rel="stylesheet" href="admin-style.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const enrollments = JSON.parse(localStorage.getItem('enrollments')) || [];
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+
+      document.getElementById('enrollmentsCount').textContent = enrollments.length;
+      document.getElementById('usersCount').textContent = users.length || 12;
+    });
+  </script>
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <div class="logo">Elite Drive Admin</div>
+      <ul class="nav-links">
+        <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="admin-enrollments.html">Enrollments</a></li>
+        <li><a href="admin-packages.html">Packages</a></li>
+        <li><a href="admin-users.html">Users</a></li>
+        <li><a href="admin-login.html">Logout</a></li>
+      </ul>
+    </aside>
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <h1>Dashboard Overview</h1>
+        <p>Welcome, Admin</p>
+      </header>
+      <section class="dashboard-cards">
+        <div class="card">
+          <h3>Total Enrollments</h3>
+          <p id="enrollmentsCount">0</p>
+        </div>
+        <div class="card">
+          <h3>Active Packages</h3>
+          <p>5</p>
+        </div>
+        <div class="card">
+          <h3>Registered Users</h3>
+          <p id="usersCount">0</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

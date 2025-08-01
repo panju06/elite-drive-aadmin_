@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enroll Now - Elite Drive</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .enroll-form {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .enroll-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0b3d91;
+    }
+    .enroll-form label {
+      display: block;
+      margin: 12px 0 5px;
+      font-weight: bold;
+    }
+    .enroll-form input,
+    .enroll-form select,
+    .enroll-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .enroll-form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0b3d91;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="enroll-form">
+    <h2>Enrollment Form</h2>
+    <form id="enrollForm">
+      <h3>Enrollee Information</h3>
+
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" required>
+
+      <label for="middleName">Middle Name</label>
+      <input type="text" id="middleName">
+
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" required>
+        <option value="">-- Select --</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="dob">Birthday</label>
+      <input type="date" id="dob" required>
+
+      <label for="contact">Contact Number</label>
+      <input type="tel" id="contact" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+
+      <label for="address">Address</label>
+      <textarea id="address" rows="3" required></textarea>
+
+      <h3>Enrollment Information</h3>
+
+      <label for="package">Training Package</label>
+      <select id="package" required>
+        <option value="">-- Select --</option>
+        <option value="Manual Car Training">Manual Car Training</option>
+        <option value="Automatic Car Training">Automatic Car Training</option>
+        <option value="Physically Challenged Car Driving">Physically Challenged Car Driving</option>
+        <option value="Student Discount">Student Discount</option>
+      </select>
+
+      <label for="startDate">Preferred Start Date</label>
+      <input type="date" id="startDate" required>
+
+      <label for="preferredTime">Preferred Time</label>
+      <input type="time" id="preferredTime" required>
+
+      <button type="submit">Submit Enrollment</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("enrollForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const data = {
+        firstName: document.getElementById("firstName").value,
+        middleName: document.getElementById("middleName").value,
+        lastName: document.getElementById("lastName").value,
+        gender: document.getElementById("gender").value,
+        dob: document.getElementById("dob").value,
+        contact: document.getElementById("contact").value,
+        email: document.getElementById("email").value,
+        address: document.getElementById("address").value,
+        package: document.getElementById("package").value,
+        startDate: document.getElementById("startDate").value,
+        preferredTime: document.getElementById("preferredTime").value,
+      };
+
+      let enrollments = JSON.parse(localStorage.getItem("enrollments") || "[]");
+      enrollments.push(data);
+      localStorage.setItem("enrollments", JSON.stringify(enrollments));
+
+      alert("Enrollment submitted successfully!");
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

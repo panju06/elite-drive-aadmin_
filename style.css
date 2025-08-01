@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.top-bar {
+  background: #002b5c;
+  color: white;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+nav {
+  display: flex;
+  background: #0b3d91;
+  color: white;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: auto;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.admin-login {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.hero {
+  position: relative;
+  background-image: url('car-driving.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 650px;
+  color: white;
+  text-align: center;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  background-color: white;
+  color: #0b3d91;
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact-card, .about-card {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  margin: 10px;
+  flex: 1 1 45%;
+}
+
+.packages ul {
+  list-style: none;
+  padding: 0;
+}
+
+.packages li {
+  background: white;
+  margin: 10px 0;
+  padding: 15px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+form {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: auto;
+}
+
+form fieldset {
+  border: none;
+  margin-bottom: 20px;
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #0b3d91;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages - Admin Panel</title>
+  <link rel="stylesheet" href="admin-style.css">
+  <style>
+    .table-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0b3d91;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f2f2f2;
+    }
+
+    .add-btn {
+      background-color: #0b3d91;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    .add-form {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .add-form input {
+      padding: 8px;
+      margin-right: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .add-form button {
+      padding: 8px 14px;
+      background-color: #0b3d91;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <div class="logo">Elite Drive Admin</div>
+      <ul class="nav-links">
+        <li><a href="admin-dashboard.html">Dashboard</a></li>
+        <li><a href="admin-enrollments.html">Enrollments</a></li>
+        <li><a href="admin-packages.html" class="active">Packages</a></li>
+        <li><a href="admin-users.html">Users</a></li>
+        <li><a href="admin-login.html">Logout</a></li>
+      </ul>
+    </aside>
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <h1>Manage Packages</h1>
+      </header>
+
+      <section class="table-container">
+        <button class="add-btn" onclick="toggleForm()">Add New Package</button>
+        <div class="add-form" id="formContainer">
+          <input type="text" id="packageName" placeholder="Package Name">
+          <input type="text" id="packageDetails" placeholder="Details">
+          <button onclick="addPackage()">Add</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Package Name</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="packageTableBody">
+            <!-- Dynamic package rows -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function toggleForm() {
+      const form = document.getElementById('formContainer');
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function addPackage() {
+      const name = document.getElementById("packageName").value.trim();
+      const details = document.getElementById("packageDetails").value.trim();
+      if (!name || !details) return alert("Please fill in all fields.");
+
+      const packages = JSON.parse(localStorage.getItem("packages") || "[]");
+      packages.push({ name, details });
+      localStorage.setItem("packages", JSON.stringify(packages));
+
+      document.getElementById("packageName").value = "";
+      document.getElementById("packageDetails").value = "";
+      displayPackages();
+    }
+
+    function displayPackages() {
+      const packages = JSON.parse(localStorage.getItem("packages") || "[]");
+      const tbody = document.getElementById("packageTableBody");
+      tbody.innerHTML = "";
+      packages.forEach(p => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${p.name}</td><td>${p.details}</td>`;
+        tbody.appendChild(row);
+      });
+    }
+
+    displayPackages();
+  </script>
+</body>
+</html>
