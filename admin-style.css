@@ -103,7 +103,7 @@ body {
   margin: 10px 0 0;
 }
 
-/* Responsive Layout */
+/* Responsive Layou t */
 @media screen and (max-width: 768px) {
   .admin-container {
     flex-direction: column;
